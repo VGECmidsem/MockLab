@@ -50,3 +50,20 @@ Create a GitHub repository, upload the contents of this folder to the repository
 - `exam_cards/`: 25 provisional image crops
 
 See `PROJECT_HANDOFF.md` for test record and maintenance instructions.
+
+## Question images with separate option text
+
+The exam keeps its larger question area and original white/blue answer colors. New PDF crops can show a question image followed by full-width text choices (`A. Red`, `B. Green`, etc.). Existing image-only sets still work as before.
+
+1. Open **PDF Crop Studio**. Leave **Question image + separate text options** checked. Select the question statement and any diagrams, excluding the options, and click **Add selected crop**.
+2. Select only the option area on the PDF. Under **Extract and check options**, choose the saved question, set its option count (2–6), and click **Read selected options**. OCR runs only on that selection; it does not read or rewrite the question crop.
+3. Compare the editable option fields with the PDF, correct recognition errors, and confirm their wording and order. If labels cannot be separated, select one option's text at a time and use **Only option A/B/etc.**, or type the exact text manually. OCR does not infer missing choices or correct answers.
+4. Use **Review crops before exam**, inspect the question image and option text, approve and save the reviewed set. The exam shows the original wording as separate selectable rows. An edit to option text clears its confirmation and question approval.
+
+The option text, confirmation and available source preview are included in portable JSON backups. Image/PNG downloads alone do not contain separate text options. The original full-image workflow remains available by unchecking the new checkbox; assisted full-question proposals also remain image-only. Existing sets are not automatically split or rewritten.
+
+English OCR uses Tesseract.js 6.0.1 in the browser. The script, worker, engine and English language data need a network connection to download; the selected PDF image is processed locally. OCR is suitable for clear printed text but is not guaranteed to preserve formulas, unusual fonts or low-resolution scans. Confirm every result before use. Question cropping remains manual so required diagrams are retained.
+
+### Development checks
+
+No build step is required for GitHub Pages. With Node.js 22+ installed, run `npm ci` followed by `npm test` for parser, storage/backup, review and exam interaction checks. Tests use a simulated DOM and stub the OCR worker; they do not replace real-browser visual checks or OCR accuracy checks on your PDFs.
