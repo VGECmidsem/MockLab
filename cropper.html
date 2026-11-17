@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#111a2e"><title>MockLab • PDF Crop Studio</title>
+<style>
+:root{font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;color-scheme:light;background:#f3f6fb;color:#18263c}*{box-sizing:border-box}body{margin:0}button,input{font:inherit}button{cursor:pointer}button:disabled{opacity:.45;cursor:not-allowed}a{color:#1460d5}.top{background:#101b30;color:#fff;padding:14px max(15px,calc((100vw - 1320px)/2));display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{font-size:21px;font-weight:800}.brand span{color:#49d3ac}.topnav{display:flex;align-items:center;gap:10px}.btn{border:0;border-radius:10px;padding:10px 15px;color:white;background:#176ce8;font-weight:700;display:inline-block;text-decoration:none}.btn.secondary{background:#e9f0fa;color:#243850}.btn.outline{background:transparent;color:inherit;border:1px solid #c3cfdf}.btn:focus-visible, a:focus-visible,input:focus-visible{outline:3px solid #86baff;outline-offset:2px}.wrap{max-width:1320px;padding:22px;margin:0 auto}.grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px}.panel{background:#fff;border:1px solid #e1e8f1;border-radius:16px;padding:20px}.toolbar{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:13px 0}.intro{color:#61728a;line-height:1.6}.tiny{font-size:12px;color:#6f7f96;line-height:1.5}.fileinput{max-width:100%;padding:12px;border:2px dashed #b9c9da;border-radius:12px;background:#f4f8fc}.canvaswrap{position:relative;display:inline-block;line-height:0;max-width:none;touch-action:none;cursor:crosshair;border:1px solid #b7c4d6;background:white;user-select:none}.canvaswrap canvas{display:block;max-width:none;height:auto}.overlay{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}.canvasbox{overflow:auto;max-height:72vh;background:#e6ecf4;padding:10px;border-radius:10px;text-align:center}.preview{width:100%;background:white;border:1px solid #dbe2eb;border-radius:8px;display:block;max-height:290px;object-fit:contain}.crop{border:1px solid #dce3ec;border-radius:10px;padding:10px;margin:10px 0}.crop img{width:100%;max-height:110px;object-fit:contain;background:white;display:block}.crop .line{display:flex;align-items:center;justify-content:space-between;gap:8px}.crop button{padding:6px 8px;font-size:12px}.status{padding:9px 11px;border-radius:8px;background:#eaf3ff;color:#234b83;font-size:13px;margin:12px 0}.status.error{background:#fff0ef;color:#ad2d2d}.badgenum{background:#edf4ff;padding:5px 10px;border-radius:9px;font-size:13px}.hidden{display:none!important}.subhead{font-size:14px;font-weight:750;margin-top:14px}.fieldrow{display:flex;align-items:center;gap:12px}.fieldrow input[type=number]{width:70px;padding:7px;border-radius:8px;border:1px solid #b8c8da}body.dark{color-scheme:dark;background:#0b1220;color:#e5eefa}body.dark .panel{background:#152135;border-color:#31435a}body.dark .intro,body.dark .tiny{color:#a5b5ca}body.dark .top{background:#080f1c}body.dark .btn.secondary{background:#2a3b53;color:#eef4fc}body.dark .btn.outline{border-color:#556780}body.dark .canvasbox{background:#223147}body.dark .crop{border-color:#36465b}body.dark .fileinput{background:#202e43;color:#d8e3f5;border-color:#536a85}body.dark .status{background:#17395e;color:#c1e1ff}body.dark .status.error{background:#542c31;color:#ffbdbd}body.dark .badgenum{background:#263a52}body.dark a{color:#94c8ff}body.dark .fieldrow input{background:#17263a;color:white;border-color:#657489}
+@media(max-width:900px){.grid{grid-template-columns:1fr}.wrap{padding:10px}.panel{padding:14px}}@media(max-width:580px){.top{padding:12px}.topnav{gap:6px}.topnav .btn{font-size:12px;padding:8px}.brand{font-size:17px}}
+
+.auto-box{margin:17px 0;border:1px solid #a4bede;border-radius:13px;padding:15px;background:#f1f7ff}.auto-actions{display:flex;gap:9px;flex-wrap:wrap;align-items:center}.proposal{border:1px solid #ccd9ea;background:white;border-radius:10px;padding:9px;margin-top:9px}.proposal img{width:100%;max-height:150px;object-fit:contain;background:white;border-radius:4px}.proposal label{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:650}.proposal .numbers{font-size:12px;color:#57657b;margin:6px 0}.proposal input[type=number]{width:65px;padding:5px;border:1px solid #b2c1d5;border-radius:6px}.warn{color:#9c4805;font-weight:700}.auto-scroll{max-height:380px;overflow:auto}.badge-auto{display:inline-block;background:#dbeafe;color:#164f92;padding:3px 8px;border-radius:12px;font-size:12px}body.dark .auto-box{background:#1a2a42;border-color:#465e80}body.dark .proposal{background:#162338;border-color:#3e516e}body.dark .proposal .numbers{color:#bccde3}body.dark .proposal input{background:#233650;color:#f4f8ff;border-color:#576a86}body.dark .badge-auto{background:#23496d;color:#cce5ff}body.dark .warn{color:#ffca83}
+</style></head>
+<body><header class="top"><div class="brand">Mock<span>Lab</span> / Crop Studio</div><div class="topnav"><a class="btn secondary" href="index.html">← Exam</a><a class="btn secondary" href="review.html">Review Questions</a><a class="btn secondary" href="library.html">Test Library</a> <a href="answer-key.html">Answer Keys</a><button class="btn secondary" id="theme" type="button">☾ Dark</button></div></header>
+<main class="wrap"><h1>PDF Question Crop Studio</h1><p class="intro">Upload a PDF, select a page, then drag a rectangle covering the <strong>question + all printed options + any required diagram</strong>. Review and save each crop. This studio offers manual cropping and <strong>assisted detection</strong> for report screenshots resembling the included Test 6 PDF. All detected crops need review for visible answers.</p>
+<div class="grid"><section class="panel"><label for="file"><strong>1. Choose a PDF</strong></label><div class="toolbar"><input class="fileinput" id="file" type="file" accept="application/pdf,.pdf"><button class="btn secondary" id="demo" type="button">Load included sample PDF</button></div><p class="tiny">PDF is processed locally in this browser. The included sample is your three-page Test 6 report. PDF rendering needs a network connection to load PDF.js unless it is hosted locally.</p>
+<div id="status" class="status" role="status">No PDF loaded yet.</div><section class="auto-box" aria-label="Assisted detection"><strong>Assisted question detection · Test 6 report layout</strong><p class="tiny">Detects the repeated pale question headers and red report buttons, then proposes full-width question blocks. <strong>It does not remove solutions or identify correct answers.</strong> For other PDF formats, use manual cropping.</p><div class="auto-actions"><button class="btn" id="autoDetect" type="button" disabled>Detect questions on all pages</button><span id="autoSummary" class="badge-auto">No proposals</span></div><div id="autoResults" class="auto-scroll" aria-live="polite"></div><div class="auto-actions" style="margin-top:10px"><button class="btn secondary" id="exportAudit" type="button" disabled>Download detection report</button><button class="btn secondary" id="selectAuto" disabled>Select all</button><button class="btn secondary" id="deselectAuto" disabled>Deselect all</button><button class="btn" id="addAuto" disabled>Add selected proposals as crops</button></div><p class="tiny warn">⚠ The source PDF shows correct options and explanations. Inspect and clean every proposed crop in Review Studio before taking an exam.</p></section>
+
+<div class="toolbar"><button class="btn outline" id="prev" disabled>← Previous page</button><span class="badgenum" id="pageLabel">Page – / –</span><button class="btn outline" id="next" disabled>Next page →</button><label class="fieldrow">Zoom <input id="zoom" type="number" min="50" max="250" step="25" value="125">%</label></div>
+<div class="canvasbox"><div class="canvaswrap" id="canvaswrap"><canvas id="pageCanvas"></canvas><svg id="overlay" class="overlay" xmlns="http://www.w3.org/2000/svg"><rect id="selection" x="0" y="0" width="0" height="0" fill="rgba(20,117,231,.14)" stroke="#0979f5" stroke-width="3" stroke-dasharray="8 4"/></svg></div></div><p class="tiny">Tip: On long screenshot pages, scroll to a question before dragging. Use zoom 125–175% for precise boundaries. If an explanation sits between options, one rectangle cannot exclude it without also cutting off options; multiple crops or a later cleanup step are required.</p></section>
+<aside class="panel"><h2 style="margin-top:0">2. Crop and export</h2><div class="subhead">Current selection</div><p class="tiny" id="selectionInfo">Drag on the page to create a selection.</p><button class="btn" id="add" disabled>Add selected crop</button><button class="btn outline" id="clear" type="button">Clear selection</button><p class="tiny">Each crop is held in this tab until you close it or reload. Download saved images to keep them.</p>
+<div id="previewPanel" class="hidden"><div class="subhead">Selected area preview</div><img class="preview" id="preview" alt="Preview of selected PDF region"></div>
+<hr style="border:0;border-top:1px solid #8193a455;margin:19px 0"><div class="toolbar"><strong>Saved crops</strong><span class="badgenum" id="count">0</span></div><button class="btn secondary" id="downloadAll" disabled>Download all PNGs</button><button class="btn" id="sendToExam" disabled>Review crops before exam →</button><button class="btn outline" id="manifest" disabled>Export crop manifest</button><div id="cropList"></div><p class="tiny">Downloading many images at once may require your browser to allow multiple downloads. The manifest stores page numbers and normalized crop coordinates for future re-extraction.</p><hr style="border:0;border-top:1px solid #8193a455;margin:18px 0"><div class="subhead">Phase 3B: send to exam</div><p class="tiny">Send your saved crops into the timed exam. The exam remembers them on this browser using IndexedDB. IMPORTANT: first remove or avoid solution boxes and answer highlights. No automatic answer removal is performed.</p></aside></div></main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="mocklab-storage.js"></script>
+<script>
+'use strict';
+const el=id=>document.getElementById(id),pdfWorker='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+let doc=null,pageNo=1,rendering=false,renderToken=0,selection=null,drag=null,crops=[],sourceName='',pageScale=1,autoProposals=[],autoBusy=false;
+const canvas=el('pageCanvas'),ctx=canvas.getContext('2d',{willReadFrequently:true});
+const themeKey='mocklab-theme-v1';
+function theme(mode){document.body.classList.toggle('dark',mode==='dark');el('theme').textContent=mode==='dark'?'☀ Light':'☾ Dark';try{localStorage.setItem(themeKey,mode)}catch(e){}}
+let initialTheme='light';try{initialTheme=localStorage.getItem(themeKey)||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}catch(e){}theme(initialTheme);
+el('theme').onclick=()=>theme(document.body.classList.contains('dark')?'light':'dark');
+function status(message,error=false){el('status').textContent=message;el('status').classList.toggle('error',error)}
+function point(e){const r=canvas.getBoundingClientRect();return {x:Math.min(canvas.width,Math.max(0,(e.clientX-r.left)*canvas.width/r.width)),y:Math.min(canvas.height,Math.max(0,(e.clientY-r.top)*canvas.height/r.height))}}
+function drawSelection(){const s=el('selection');if(!selection){s.setAttribute('width',0);s.setAttribute('height',0);el('add').disabled=true;el('selectionInfo').textContent='Drag on the page to create a selection.';el('previewPanel').classList.add('hidden');return}for(const k of ['x','y','width','height'])s.setAttribute(k,selection[k]);el('add').disabled=selection.width<15||selection.height<15||rendering;el('selectionInfo').textContent=`${Math.round(selection.width)} × ${Math.round(selection.height)} pixels · page ${pageNo}`;}
+function getPreview(){if(!selection||selection.width<15||selection.height<15)return null;const sc=document.createElement('canvas');sc.width=Math.ceil(selection.width);sc.height=Math.ceil(selection.height);sc.getContext('2d').drawImage(canvas,selection.x,selection.y,selection.width,selection.height,0,0,sc.width,sc.height);return sc}
+function showPreview(){const sc=getPreview();if(!sc)return;el('preview').src=sc.toDataURL('image/png');el('previewPanel').classList.remove('hidden')}
+const wrap=el('canvaswrap');wrap.addEventListener('pointerdown',e=>{if(!doc||rendering||e.button!==0)return;e.preventDefault();wrap.setPointerCapture(e.pointerId);drag=point(e);selection={x:drag.x,y:drag.y,width:0,height:0};drawSelection()});
+wrap.addEventListener('pointermove',e=>{if(!drag)return;const p=point(e);selection={x:Math.min(drag.x,p.x),y:Math.min(drag.y,p.y),width:Math.abs(p.x-drag.x),height:Math.abs(p.y-drag.y)};drawSelection()});
+function finishDrag(){if(!drag)return;drag=null;drawSelection();showPreview()}wrap.addEventListener('pointerup',finishDrag);wrap.addEventListener('pointercancel',finishDrag);
+el('clear').onclick=()=>{selection=null;drawSelection()};
+async function loadPdf(bytes,name){if(!window.pdfjsLib){status('PDF.js could not load. Connect to the internet or host a local copy of PDF.js.',true);return}try{renderToken++;doc=null;selection=null;drawSelection();status('Loading PDF…');pdfjsLib.GlobalWorkerOptions.workerSrc=pdfWorker;const task=pdfjsLib.getDocument({data:bytes});doc=await task.promise;sourceName=name;pageNo=1;crops=[];autoProposals=[];drawAuto();drawCrops();await renderPage();status(`Loaded ${name} — ${doc.numPages} pages. Draw a crop or run assisted detection.`);el('autoDetect').disabled=false}catch(err){status('Could not read PDF: '+(err.message||String(err)),true);console.error(err)}}
+el('file').onchange=async e=>{const f=e.target.files?.[0];if(!f)return;await loadPdf(new Uint8Array(await f.arrayBuffer()),f.name)};
+el('demo').onclick=async()=>{try{status('Loading included Test 6 PDF…');const res=await fetch('sample_test.pdf');if(!res.ok)throw Error('HTTP '+res.status);await loadPdf(new Uint8Array(await res.arrayBuffer()),'sample_test.pdf')}catch(e){status('Sample loading failed. Run this folder via a local web server or GitHub Pages, or choose the PDF manually. '+e.message,true)}};
+async function renderPage(){if(!doc||rendering)return;rendering=true;el('prev').disabled=el('next').disabled=el('add').disabled=true;selection=null;drawSelection();const token=++renderToken;try{const page=await doc.getPage(pageNo);const zoom=Number(el('zoom').value);const boundedZoom=Number.isFinite(zoom)?Math.min(250,Math.max(50,zoom)):125;el('zoom').value=boundedZoom;const baseline=page.getViewport({scale:1});const requestedScale=boundedZoom/100*0.7;const safeScale=Math.min(requestedScale,Math.sqrt(18000000/(baseline.width*baseline.height)),8192/Math.max(baseline.width,baseline.height));const viewport=page.getViewport({scale:safeScale});canvas.width=Math.ceil(viewport.width);canvas.height=Math.ceil(viewport.height);el('overlay').setAttribute('viewBox',`0 0 ${canvas.width} ${canvas.height}`);await page.render({canvasContext:ctx,viewport}).promise;if(token!==renderToken)return;pageScale=viewport.scale;el('pageLabel').textContent=`Page ${pageNo} / ${doc.numPages}`;status(`Page ${pageNo} rendered. Draw a crop rectangle.`)}catch(e){status('Page rendering failed: '+e.message,true)}finally{rendering=false;el('prev').disabled=pageNo<=1;el('next').disabled=pageNo>=doc.numPages;drawSelection()}}
+el('prev').onclick=async()=>{if(doc&&!rendering&&pageNo>1){pageNo--;await renderPage()}};el('next').onclick=async()=>{if(doc&&!rendering&&pageNo<doc.numPages){pageNo++;await renderPage()}};el('zoom').onchange=()=>{if(doc&&!rendering)renderPage()};
+function download(url,name){const a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove()}
+el('add').onclick=()=>{const sc=getPreview();if(!sc)return;const data=sc.toDataURL('image/png');const crop={id:crops.length+1,page:pageNo,file:`question_${String(crops.length+1).padStart(2,'0')}.png`,data,rect:{x:selection.x/canvas.width,y:selection.y/canvas.height,width:selection.width/canvas.width,height:selection.height/canvas.height}};crops.push(crop);drawCrops();selection=null;drawSelection();status(`Saved crop ${crop.id} from page ${crop.page}. Download it before leaving this page.`)};
+function drawCrops(){const list=el('cropList');list.replaceChildren();el('count').textContent=crops.length;el('downloadAll').disabled=el('manifest').disabled=el('sendToExam').disabled=crops.length===0;crops.forEach((crop,i)=>{const card=document.createElement('div');card.className='crop';const top=document.createElement('div');top.className='line';const label=document.createElement('strong');label.textContent=`Q${i+1} · page ${crop.page}`;const buttons=document.createElement('div');const save=document.createElement('button');save.className='btn secondary';save.textContent='PNG';save.onclick=()=>download(crop.data,crop.file);const remove=document.createElement('button');remove.className='btn outline';remove.textContent='Remove';remove.onclick=()=>{crops.splice(i,1);crops.forEach((c,j)=>{c.id=j+1;c.file=`question_${String(j+1).padStart(2,'0')}.png`});drawCrops()};buttons.append(save,remove);top.append(label,buttons);const img=document.createElement('img');img.src=crop.data;img.alt=`Crop ${i+1} from page ${crop.page}`;card.append(top,img);list.append(card)})}
+el('downloadAll').onclick=()=>{if(!crops.length)return;if(!confirm(`Download ${crops.length} separate PNG file(s)? Your browser may ask to allow multiple downloads.`))return;crops.forEach(c=>download(c.data,c.file))};
+el('sendToExam').onclick=async()=>{if(!crops.length)return;if(!confirm(`Transfer ${crops.length} crops into a timed test? This creates a new saved test. IMPORTANT: Your original report contains answer highlights and explanations. Inspect and clean each crop first.`))return;try{el('sendToExam').disabled=true;const questions=crops.map(c=>({src:c.data,page:c.page,name:c.file}));const set=await MockLabStore.save({name:`${sourceName||'PDF'} — manual crops`,source:sourceName,questions});status(`Saved ${questions.length} question crops to this browser. Opening review studio…`);location.href='review.html?set='+encodeURIComponent(set.id)}catch(e){status('Unable to save crops: '+e.message,true);el('sendToExam').disabled=false}};
+el('manifest').onclick=()=>{const data={schema:'mocklab.crop-manifest.v1',source:sourceName,createdAt:new Date().toISOString(),coordinateSystem:'normalized per rendered page',note:'Manual crops; image files must be downloaded separately.',crops:crops.map(({id,page,file,rect})=>({id,page,file,rect}))};const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));download(url,'crop_manifest.json');setTimeout(()=>URL.revokeObjectURL(url),1000)};
+
+/* Phase 3E — visual layout proposal detector. Deliberately template-specific and review-first.
+   Uses only browser pixel data, no OCR/cloud/answer recognition. */
+function isHeaderColor(c){const [r,g,b]=c;return r>=205&&r<=250&&g>=206&&g<=251&&b>=216&&b<=255&&b>=r+3&&b>=g+1}
+function isRed(c){const [r,g,b]=c;return r>95&&r>g*1.65&&r>b*1.23&&g<135}
+function detectTemplateHeaders(image){
+ const {data,width:w,height:h}=image;const xs=[.37,.55,.75].map(q=>Math.round(q*(w-1))), reds=[.90,.92,.94].map(q=>Math.round(q*(w-1)));
+ const col=(x,y)=>{const j=(y*w+x)*4;return [data[j],data[j+1],data[j+2]]};
+ const minRun=Math.max(2,Math.round(h/2400)),gapLimit=Math.max(1,Math.round(h/3000));
+ let groups=[],start=-1,last=-1,count=0;
+ for(let y=0;y<h;y++){
+  const ok=xs.every(x=>isHeaderColor(col(x,y))) && reds.some(x=>isRed(col(x,y)));
+  if(ok){if(start<0)start=y;last=y;count++}
+  if((!ok&&start>=0&&y-last>gapLimit)||y===h-1){
+   if(count>=minRun)groups.push({start,last,count});start=-1;count=0;
+  }
+ }
+ const output=[];const minSeparation=h/45;
+ for(const group of groups){if(output.length&&group.start-output[output.length-1]<minSeparation)continue;output.push(group.start)}
+ return output;
+}
+function drawAuto(){
+ const list=el('autoResults');list.replaceChildren();el('autoSummary').textContent=`${autoProposals.length} proposals`;
+ const has=autoProposals.length>0;for(const id of ['selectAuto','deselectAuto','addAuto','exportAudit'])el(id).disabled=!has||autoBusy;
+ autoProposals.forEach((p,i)=>{
+  const box=document.createElement('div');box.className='proposal';
+  const label=document.createElement('label'),tick=document.createElement('input');tick.type='checkbox';tick.checked=p.selected;tick.disabled=autoBusy;tick.onchange=()=>p.selected=tick.checked;
+  const name=document.createElement('span');name.textContent=`Proposed Q${i+1} · page ${p.page}`;label.append(tick,name);
+  const img=document.createElement('img');img.src=p.data;img.alt=`Question proposal ${i+1}, page ${p.page}`;img.loading='lazy';
+  const note=document.createElement('p');note.className='numbers';note.textContent=`Full question block · ${p.width}×${p.height}px · answer feedback may be visible`;
+  const audit=document.createElement('label');audit.style='display:block;font-size:12px;margin:8px 0';const v=document.createElement('input');v.type='checkbox';v.checked=!!p.boundaryChecked;v.onchange=()=>p.boundaryChecked=v.checked;audit.append(v,document.createTextNode(' Boundaries visually checked (statement, options, diagram). Does NOT mean answers are hidden.'));
+  box.append(label,img,note,audit);list.append(box)
+ });
+}
+el('exportAudit').onclick=()=>{const report={schema:'mocklab.detection-audit.v1',createdAt:new Date().toISOString(),source:sourceName,warning:'Checking boundaries does not remove visible answer feedback.',summary:{total:autoProposals.length,boundariesChecked:autoProposals.filter(p=>p.boundaryChecked).length,selected:autoProposals.filter(p=>p.selected).length},proposals:autoProposals.map((p,i)=>({number:i+1,page:p.page,selected:p.selected,boundaryChecked:!!p.boundaryChecked,rect:p.rect,width:p.width,height:p.height}))};const url=URL.createObjectURL(new Blob([JSON.stringify(report,null,2)],{type:'application/json'}));download(url,'mocklab_detection_audit.json');setTimeout(()=>URL.revokeObjectURL(url),2000)};
+el('selectAuto').onclick=()=>{autoProposals.forEach(p=>p.selected=true);drawAuto()};
+el('deselectAuto').onclick=()=>{autoProposals.forEach(p=>p.selected=false);drawAuto()};
+el('addAuto').onclick=()=>{
+ const chosen=autoProposals.filter(p=>p.selected);
+ const unchecked=chosen.filter(p=>!p.boundaryChecked).length;
+ if(unchecked&&!confirm(`${unchecked} proposed block(s) have not had their boundaries checked. Transfer them as unreviewed draft crops anyway?`))return;
+ if(!chosen.length){status('Select one or more proposals first.',true);return}
+ chosen.forEach(p=>{const n=crops.length+1;crops.push({id:n,page:p.page,file:`question_${String(n).padStart(2,'0')}.png`,data:p.data,rect:p.rect,assisted:true})});
+ autoProposals=autoProposals.filter(p=>!p.selected);drawAuto();drawCrops();
+ status(`Added ${chosen.length} detected question crops. Review every crop for visible solutions before use.`)
+};
+el('autoDetect').onclick=async()=>{
+ if(!doc||autoBusy||rendering)return;
+ autoBusy=true;el('autoDetect').disabled=true;
+ autoProposals=[];drawAuto();
+ const limit=25;let pagesProcessed=0;
+ try{
+  for(let n=1;n<=doc.numPages;n++){
+   status(`Detecting report layout · page ${n}/${doc.numPages}…`);
+   await new Promise(resolve=>setTimeout(resolve,0));
+   const pg=await doc.getPage(n),base=pg.getViewport({scale:1});
+   const scale=Math.min(1.3,Math.sqrt(15000000/(base.width*base.height)),7500/Math.max(base.width,base.height));
+   const viewport=pg.getViewport({scale});
+   const off=document.createElement('canvas');off.width=Math.floor(viewport.width);off.height=Math.floor(viewport.height);
+   const context=off.getContext('2d',{willReadFrequently:true});
+   await pg.render({canvasContext:context,viewport}).promise;
+   const headers=detectTemplateHeaders(context.getImageData(0,0,off.width,off.height));
+   if(headers.length>limit)throw Error('Too many candidate headers; unsupported PDF layout');
+   for(let j=0;j<headers.length;j++){
+    const top=Math.max(0,headers[j]-Math.round(off.height*.0015));
+    const bottom=j+1<headers.length?Math.max(top+20,headers[j+1]-Math.round(off.height*.0015)):off.height-Math.round(off.height*.008);
+    const left=Math.round(off.width*.181),right=Math.round(off.width*.965);
+    if(bottom-top<25||right-left<30)continue;
+    const output=document.createElement('canvas');output.width=right-left;output.height=bottom-top;
+    output.getContext('2d').drawImage(off,left,top,output.width,output.height,0,0,output.width,output.height);
+    autoProposals.push({page:n,selected:true,data:output.toDataURL('image/jpeg',.92),width:output.width,height:output.height,rect:{x:left/off.width,y:top/off.height,width:output.width/off.width,height:output.height/off.height},boundaryChecked:false});
+   }
+   pagesProcessed++;drawAuto();await new Promise(resolve=>setTimeout(resolve,0));
+  }
+  if(!autoProposals.length)status('No matching question header pattern found. Use manual cropping for this document.',true);
+  else status(`Proposed ${autoProposals.length} raw question blocks over ${pagesProcessed} pages. Uncheck incorrect blocks; add to crops, then clean in Review Studio.`);
+ }catch(e){status('Assisted detection stopped: '+e.message+'. You can still crop manually.',true);console.error(e)}
+ finally{autoBusy=false;el('autoDetect').disabled=!doc;drawAuto()}
+};
+</script></body></html>
